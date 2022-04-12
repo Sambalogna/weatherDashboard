@@ -5,24 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <h1>Search thy Weather</h1>
-    <form>
-    <input id="search"><button id="btnInput">search</button>
-    </form>
-    <!-- Retrieved data will be dumped here -->
-    <section class="container">
-        <div class="city"></div>
-        <div class="wind"></div>
-        <div class="humidity"></div>
-        <div class="temp"></div>
-        <div class="FEELZ"></div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Search Thy Weather</h1>
+          <form>
+            <input id="search"><button id="btnInput">search</button>
+            </form>
+        </div>
+      </div>
+    <h1></h1>
+    <section class="container-fluid">
+        
     </section>
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./assets/javascript/geocoding.js"></script>
 <script src="./assets/javascript/script.js"></script>
 </body>
 </html>

@@ -1,52 +1,44 @@
 
-//https://api.openweathermap.org/data/2.5/weather?q=
-//{city name},{state code},{country code}&appid={API key}
-//parameters:
-// q  is for city name, state code and country code divided by comma
-// appid is for the API key
-// units ours is imperial
-function buildQueryURL(){
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?"
-    var queryParams = {
+ function updatePage(response) {
+     console.log(response)
+     
+    $(".container-fluid").html('<div class="card" style="width: 18rem;">' +
+        '<div class="card-body">' +
+        '<h5 class="card-title city"></h5>' +
+        '<p class="card-text">' +
+         '<div class="temp"></div>' +
+         '<div class="humidity"></div>' +
+         '<div class="uvi"></div>' +
+         '<div class="wind"></div>' +
+         '<div class= "icon"></div>' +
+        '</p>' +
+       '<a href="#" class="card-link"></a>' +
+     '</div>' +
+    '</div>' +
+    '<div class="card" style="width: 18rem;"> <div class="card-header day1"></div> <ul class="list-group list-group-flush">' +
+    '<li class="list-group-item temperature1"></li>'+
+    '<li class="list-group-item humidity1"></li>' +
+    '<li class="list-group-item"></li>' +
+    '</ul> </div>')
 
-    };
-    queryParams.q = $("#search").val().trim();
-    console.log(queryParams.q)
-    queryParams.units = "imperial"
-    console.log(queryParams.units)
-    queryParams.appid = "10a435f0f1bcc2310fbd0c0b7e3018c3"
-    console.log(queryParams.appid)
-
-    console.log(queryURL+$.param(queryParams));
-    return queryURL+$.param(queryParams)
-}
-
-    function updatePage() {
-        $(".city").html("<h2>" + response.name + " here dat weather </h2>");
-        $(".wind").html("<p> This is how fast the wind go: "+ response.wind.speed + "</p>")
-        $(".humidity").html("<p> Humidity is: "+ response.main.humidity+ "</p>");
-        $(".temp").html("<p> Temperature (F): "+ response.main.temp + "</p>")
-        $(".FEELZ").html("<p> It feels like: "+ response.main.feels_like + "(F)</p>")
-    }
-    // function clear () {
-    //     $(".container").empty();
-    // }
-
-    //AJAX call
-    $("#btnInput").on("click", function(event) {
-        event.preventDefault(); 
-        // clear();
-        var queryURL = buildQueryURL();
-    $.ajax({ url: queryURL, method:"GET"}).then(function(response){
-        console.log(response)
-        $(".city").html("<h2>" + response.name + " here dat weather </h2>");
-        $(".wind").html("<p> This is how fast the wind go: "+ response.wind.speed + "</p>")
-        $(".humidity").html("<p> Humidity is: "+ response.main.humidity+ "</p>");
-        $(".temp").html("<p> Temperature (F): "+ response.main.temp + "</p>")
-        $(".FEELZ").html("<p> It feels like: "+ response.main.feels_like + "(F)</p>")
-  
+     $(".city").html($("#search").val().toUpperCase() );
+     $(".temp").html("<p> Temperature: "+ response.current.temp + "(F)</p>")
+     $(".humidity").html("<p> Humidity: "+ response.current.humidity + "%</p>");
+     $(".uvi").html("<p> UV Index: "+ response.current.uvi + "</p>")
+     $(".wind").html("<p> Wind Speed: "+ response.current.wind_speed + "(mph)</p>")
+     $(".card-link").html("Save")
+     $(".card").css("border", "gray solid 2px")
+     
+    function addIcon () {
+        var imgURL = "http://openweathermap.org/img/wn/"
+        var iconURL = imgURL + response.current.weather[0].icon+ '@2x.png'
+        $(document).ready(function(){
+            var image = new Image();
+            image.src = iconURL;
+            $('.icon').append(image)
+        })};
+addIcon();
     
-    });
+ }
+ 
 
-    });
-  

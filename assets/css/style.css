@@ -1,0 +1,11 @@
+h1 {
+    font-family: 'DotGothic16', sans-serif;
+}
+body {
+    background-color: #355c7d;
+}
+.card {
+    /* background-color: #F67280; */
+    padding-left: 1em;
+    border-radius: 7px;
+}
