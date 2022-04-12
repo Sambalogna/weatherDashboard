@@ -12,15 +12,13 @@
          '<div class="wind"></div>' +
          '<div class= "icon"></div>' +
         '</p>' +
-       '<button class="card-btn"></button>' +
-     '</div>' +
-    '</div>' )
+        '</div>' +
+        '</div>' )
      $(".city").html($("#search").val().toUpperCase() );
      $(".temp").html("<p> Temperature: "+ response.current.temp + "(F)</p>")
      $(".humidity").html("<p> Humidity: "+ response.current.humidity + "%</p>");
      $(".uvi").html("<p> UV Index: "+ response.current.uvi + "</p>")
      $(".wind").html("<p> Wind Speed: "+ response.current.wind_speed + "(mph)</p>")
-     $(".card-btn").html("Save")
      $(".card").css("border", "gray solid 2px")
      
     function addIcon () {
