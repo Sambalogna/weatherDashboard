@@ -37,21 +37,22 @@ function getLonLat(response) {
     }
         var queryURL = buildQueryURL();
         $.ajax({ url: queryURL, method:"GET"}).then(updatePage)
-
+    //clicking once will save the PREVIOUS SESSIONS HISTORY TO THE CURRENTLY SEARCHED CITY HISTORY.Clicking search a second time for the currently displayed location
+    //will correctly save the output to a history tab. 
     $("#btnInput").on("click", saveQuery);
     function saveQuery(){
+        console.log(queryURL)
         var queryURLSave = queryURL
         if (queryURLSave) {
             localStorage.setItem('query', queryURLSave);
         }     
     }
     var querySave = localStorage.getItem('query')
-    console.log(querySave)
-    console.log(localStorage)
+    //console.log(querySave)
+    //console.log(localStorage)
 
-    $("section").after('<div><button id="lastSearch">Last Search</button></div>')
+    $("section").after('<div><button id="lastSearch">'+ geoParams.q+'</button></div>')
     $("#lastSearch").on("click",function(){
-        console.log('clickeeeddd')
         $.ajax({url:querySave, method:"GET"}).then(updatePage)
     })
 } 
