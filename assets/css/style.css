@@ -5,7 +5,15 @@ body {
     background-color: #355c7d;
 }
 .card {
-    /* background-color: #F67280; */
+    background-color: #F67280;
     padding-left: 1em;
     border-radius: 7px;
+    margin-right: 50%;
+}
+.fiveDay {
+    display: inline-block;
+    background-color: #F8B195 ;
+    margin-right: 75%;
+    margin-top: .5%;
+    margin-bottom: .5%;
 }
