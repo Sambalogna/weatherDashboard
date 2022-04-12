@@ -46,4 +46,3 @@ addIcon();
 fiveDay();     
  }
  
-

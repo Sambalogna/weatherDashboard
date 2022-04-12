@@ -31,8 +31,18 @@ function getLonLat(response) {
     }
         var queryURL = buildQueryURL();
         $.ajax({ url: queryURL, method:"GET"}).then(updatePage)
+
+        $("#btnInput").on("click", saveQuery);
+ function saveQuery(){
+     console.log('i was clicked')
+  var queryURLSave = queryURL
+  if (queryURLSave) {
+      localStorage.setItem('query', queryURLSave);
+  }}
+ var querySave = localStorage.getItem('query'+[0])
+ console.log(querySave)
+ } 
    
-}
 $("#btnInput").on("click", function(event) {
     event.preventDefault();
      
@@ -40,14 +50,4 @@ $("#btnInput").on("click", function(event) {
     $.ajax({ url: geoURL, method:"GET"}).then(getLonLat)
 });
     
-$(".card-btn").on("click",saveQuery) 
-function saveQuery(){
-    console.log('i was clicked')
- for(var i = 0; i < 10; i++)
- var queryURLSave = queryURL
- if (queryURLSave) {
-     localStorage.setItem('query'+[i], queryURLSave);
- }
-var querySave = localStorage.getItem('query'+[0])
-console.log(querySave)
-}   
+
